@@ -11,8 +11,16 @@
         {% for product in products %}
         <p> {{ product }}</p>
         {% endfor %}
+            <div>
             <img src = "https://www.azuregreen.net/images/FC150.JPG" alt="Large Gazing Sphere">
-        </fieldset>
+            <form action="POST">
+                <button type="button"><a href="cart.html">Buy It Now</a></button>
+            </form>
+            <p align=right>Product code: FC200
+                <br>Price: $500USD
+            </p>
+            </div>
+       </fieldset>
         {% endblock %}
     </body>
 </html>

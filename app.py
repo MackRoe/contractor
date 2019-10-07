@@ -19,6 +19,13 @@ def products_index():
     # product_catalog=product_catalog.find()
     # --- ----- ----- ----- ----- ---
 
+
+@app.route("/cart.html")
+def cart():
+    """ renders cart page """
+    return render_template('cart.html')
+
+
 def load_catalog():
     f = open('AG_Complete_Files.csv', 'r')
     products = f.readlines()
