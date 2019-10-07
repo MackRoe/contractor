@@ -4,7 +4,15 @@
         <title>Index</title>
     </head>
     <body>
+        {% block content %}
         <h1>{{ title }}</h1>
-
+        <fieldset>
+            <legend>Here be the Stuff</legend>
+        {% for product in products %}
+        <p> {{ product }}</p>
+        {% endfor %}
+            <img src = "https://www.azuregreen.net/images/FC150.JPG" alt="Large Gazing Sphere">
+        </fieldset>
+        {% endblock %}
     </body>
 </html>
