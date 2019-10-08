@@ -65,6 +65,19 @@ def signup_submit():
 def show_product():
     return render_template(product.html)
 
+
+def create_cart_item():
+    pass
+
+def show_cart_item():
+    pass
+
+def update_cart_item():
+    pass
+
+def remove_cart_item():
+    pass
+
 # ---- not this time Tilda ----
 # def load_catalog():
 #     f = open('AG_Complete_Files.csv', 'r')
