@@ -3,6 +3,9 @@
     <head>
         <title>Witch Store</title>
     </head>
+    {% include 'templates/partials/navbar.html' %}
+    {% include '/store_index.html' %}
+
     <body>
         {% block content %}
         <h1>{{ title }}</h1>
@@ -12,9 +15,10 @@
         <p> {{ product }}</p>
         {% endfor %}
             <div>
-            <img src = "https://www.azuregreen.net/images/FC150.JPG" alt="Large Gazing Sphere">
+            <img src = "{{ product.img_url }}" alt={{ product.name }}>
             <form action="POST">
                 <button type="button"><a href="cart.html">Buy It Now</a></button>
+                <!-- find code to send prod_id info to cart -->
             </form>
             <p align=right>Product code: FC200
                 <br>Price: $500USD

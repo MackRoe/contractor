@@ -1,0 +1,17 @@
+<!-- templates/store_index.html -->
+{% extends 'base.html' %}
+
+{% include 'partials/storefront_header.html' %}
+
+{% block content %}
+<h1>Something, Something</h1>
+
+<a href='/cart.html'>Cart</a>
+
+    {% for product in products %}
+        {{ product.name }}
+        {{ product.description }}
+        {{ product.image }} <!-- examine -->
+        {{ product.price }}
+    {% endfor %}
+{% endblock %}

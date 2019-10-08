@@ -11,7 +11,7 @@ import os
 def import_csvfile(/data/AG_Complete_Files.csv):
     mng_client = pymongo.MongoClient('localhost', 27017)
     mng_db = mng_client['contractor/db'] # Replace mongo db name
-    collection_name = 'product_catalog' # Replace mongo db collection name
+    collection_name = 'products' # Replace mongo db collection name
     db_cm = mng_db[collection_name]
     cdir = os.path.dirname(__file__)
     file_res = os.path.join(cdir, filepath)

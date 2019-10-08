@@ -1,10 +1,24 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
+from bson.objectid import ObjectId
+import os
+
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/contractor')
 client = MongoClient()
-db = client.Contractor
-product_catalog = db.product_catalog
-# product_catalog = read(AG_Contractor_Files.csv)
+db = client.Contractor # may not be correct name
+products= db.products
+url_base = "https://www.azuregreen.net/images/"
+
+
+client = MongoClient(host=f'{host}?retryWrites=false')
+
+db = client.get_default_database()
+
+
+
+# img_ref = products.find_one({'_id': ObjectID(img_ref)})
+# img_url = url_base + img_ref # get help
+
 
 app = Flask(__name__)
 
@@ -12,12 +26,9 @@ app = Flask(__name__)
 def products_index():
     # message = "Hello World"
     
-    # load_catalog() # -- comment out to debug --
-    title = "Buy This Stuff"
-    return render_template('index.html', title=title)
-    # --- removed from return ---
-    # product_catalog=product_catalog.find()
-    # --- ----- ----- ----- ----- ---
+    # load_catalog() # -- comment out to save for later --
+    title = "Witch Store"
+    return render_template('store_index.html', title=title)
 
 
 @app.route("/cart.html")
@@ -26,20 +37,50 @@ def cart():
     return render_template('cart.html')
 
 
-def load_catalog():
-    f = open('AG_Complete_Files.csv', 'r')
-    products = f.readlines()
-    f.close()
-    products = products[0].split(',')
-    products = list(products)
+@app.route("/main.html")
+def main():
+    """renders main from base ?"""
+    return render_template("base.html")
 
 
-def catalog_sort():
-    # sort items from AG_Complete_Files.csv
-    # as either product codes or product descriptions
-    pass
+@app.route("/signup.html")
+def signup():
+    """ renders signup page """
+    return render_template("signup.html")
+
+# HELP! ... app.route(what?)
+@app.route('/members.txt', methods=['POST'])
+def signup_submit():
+    """Submit a new profile"""
+    new_user = {
+        "user_name": request.form.get("user_name"),
+        "user_email": request.form.get("user_email")
+    }
+    # --- what to do with input data ?? ---
+    # print(request.form.to_dict()) -- NO
+    return redirect(url_for('main'))
+
+
+@app.route('/product.html')
+def show_product():
+    return render_template(product.html)
+
+# ---- not this time Tilda ----
+# def load_catalog():
+#     f = open('AG_Complete_Files.csv', 'r')
+#     products = f.readlines()
+#     f.close()
+#     products = products[0].split(',')
+#     products = list(products)
+
+
+# def catalog_sort():
+#     # sort items from AG_Complete_Files.csv
+#
+#     pass
+# -- -- -- -- -- -- -- -- -- --
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-    load_catalog()
+    # load_catalog()

@@ -7,12 +7,17 @@
     <meta charset='utf-8'>
     <title>Witch Store</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 </head>
 <body>
+        {% include 'partials/navbar.html' %}
+
+    <h1>{{ title }}</h1>
 
     {% block content %}
-        {% include 'templates/navbar.html'}
+
     {% endblock %}
 
     <!-- Latest compiled and minified JavaScript -->
