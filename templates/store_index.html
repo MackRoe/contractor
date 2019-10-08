@@ -4,9 +4,17 @@
 {% include 'partials/storefront_header.html' %}
 
 {% block content %}
-<h1>Something, Something</h1>
+<div class="email_list">
+    <fieldset>
+        <label>Join Our Mailing List</label>
+        <form method="POST">
+                Email:<input type="text" name="member_email">
+        </form>
+    </fieldset>
 
-<a href='/cart.html'>Cart</a>
+</div>
+<h2>Featured Products</h2>
+
 
     {% for product in products %}
         {{ product.name }}

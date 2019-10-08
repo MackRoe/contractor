@@ -5,7 +5,8 @@ import os
 
 """ python template to import a CSV file into mongodb:
     code credit to Loginworks Softwares Inc, 4870 Sadler Road,
-    Suite 300-Office 319 Glen Allen, VA 23060"""
+    Suite 300-Office 319 Glen Allen, VA 23060
+    --- reference for future scaling --- """
 
  
 def import_csvfile(/data/AG_Complete_Files.csv):
