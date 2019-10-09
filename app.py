@@ -5,7 +5,7 @@ import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/contractor')
 client = MongoClient()
-db = client.Contractor # may not be correct name
+db = client.Contractor
 products= db.products
 cart = db.cart
 members = db.members
@@ -26,11 +26,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def products_index():
-    # message = "Hello World"
-    
+    """ renders front page of site and shows featured products """
     # load_catalog() # -- comment out to save for later --
     title = "Witch Store"
-    return render_template('store_index.html', title=title)
+    return render_template('store_index.html', products=products.find())
 
 
 @app.route("/main.html")
@@ -59,22 +58,9 @@ def signup_submit():
 
 @app.route('/product.html')
 def show_product():
+    """ show individual product detail """
     return render_template(product.html)
 
-@app.route("/cart.html")
-def cart():
-    """ renders cart page - R of CRUD """
-    return render_template('cart.html', cart=cart.find())
-
-def create_cart_item():
-    pass
-
-
-def update_cart_item():
-    pass
-
-def remove_cart_item():
-    pass
 
 # ---- not this time Tilda ----
 # def load_catalog():

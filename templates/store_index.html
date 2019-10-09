@@ -15,11 +15,23 @@
 </div>
 <h2>Featured Products</h2>
 
+{% for product in products %}
+    <h4>{{ product.name }}</h4>
+    <img src="{{ img_url }}">
+    {{ product.desc }}
+    ${{ product.price }}
+{% endfor %}
+<div class="store">
+        <p></p>
+        <img src = "static/CCATB.jpg"><br>
+        <button class="btn btn-outline-default my-2 my-sm-0" name="CCATB" type="submit">Buy</button>
+        <p></p>
+        <img src = "static/FC150.jpg"><br>
+        <button class="btn btn-outline-default my-2 my-sm-0" name="FC150" type="submit">Buy</button>
+        <p></p>
+        <img src = "static/RCFC8.jpg"><br>
+        <button class="btn btn-outline-default my-2 my-sm-0" name="RCFC8" type="submit">Buy</button>
+</div>
 
-    {% for product in products %}
-        {{ product.name }}
-        {{ product.description }}
-        {{ product.image }} <!-- examine -->
-        {{ product.price }}
-    {% endfor %}
+
 {% endblock %}
