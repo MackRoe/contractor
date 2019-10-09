@@ -7,6 +7,8 @@ host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/contractor')
 client = MongoClient()
 db = client.Contractor # may not be correct name
 products= db.products
+cart = db.cart
+members = db.members
 url_base = "https://www.azuregreen.net/images/"
 
 
@@ -29,12 +31,6 @@ def products_index():
     # load_catalog() # -- comment out to save for later --
     title = "Witch Store"
     return render_template('store_index.html', title=title)
-
-
-@app.route("/cart.html")
-def cart():
-    """ renders cart page """
-    return render_template('cart.html')
 
 
 @app.route("/main.html")
@@ -65,12 +61,14 @@ def signup_submit():
 def show_product():
     return render_template(product.html)
 
+@app.route("/cart.html")
+def cart():
+    """ renders cart page - R of CRUD """
+    return render_template('cart.html', cart=cart.find())
 
 def create_cart_item():
     pass
 
-def show_cart_item():
-    pass
 
 def update_cart_item():
     pass
