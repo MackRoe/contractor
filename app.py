@@ -6,7 +6,8 @@ import os
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/contractor')
 client = MongoClient(host=f'{host}?retryWrites=false')
-db = client.Contractor
+# db = client.Contractor
+db = client.get_default_database()
 products = db.products
 cart = db.cart
 members = db.members
@@ -15,7 +16,7 @@ url_base = "https://www.azuregreen.net/images/"
 
 
 
-db = client.get_default_database()
+
 
 
 
@@ -162,5 +163,7 @@ def calc_cart_total():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
+    
+    # -- saving for later scaling --
     # load_catalog()
