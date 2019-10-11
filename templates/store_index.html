@@ -4,6 +4,7 @@
 {% include 'partials/storefront_header.html' %}
 
 {% block content %}
+<fieldset class="email_list">
 <div class="email_list">
     
         Join Our Mailing List!
@@ -13,6 +14,11 @@
    
 
 </div>
+</fieldset>
+<!-- center tag temporary pending css improvement -->
+<center>
+<div class="store">
+<br>
 <h2>Featured Products</h2>
 
 {% for product in products %}
@@ -21,17 +27,23 @@
     {{ product.desc }}
     ${{ product.price }}
 {% endfor %}
-<div class="store">
-        <p></p>
-        <img src = "static/CCATB.jpg"><br>
-        <button class="btn btn-outline-default my-2 my-sm-0" name="CCATB" type="submit">Buy</button>
-        <p></p>
+<hr>
+        <a href="CCATB.html"><img src = "static/CCATB.jpg" class="prod_img" alt="{{ product_name }}"></a><br>
+        <a href="cart.html">
+        <button class="btn btn-outline-default my-2 my-sm-0" name="CCATB" type="submit">
+        <input type="hidden" name="buy" value="True"/>Buy</button>
+        </a>
+        <form action="/updated_cart">
+                <button type="submit">Buy</button>
+        </form>
+        <hr>
         <img src = "static/FC150.jpg"><br>
         <button class="btn btn-outline-default my-2 my-sm-0" name="FC150" type="submit">Buy</button>
-        <p></p>
+        <hr>
         <img src = "static/RCFC8.jpg"><br>
         <button class="btn btn-outline-default my-2 my-sm-0" name="RCFC8" type="submit">Buy</button>
 </div>
 
 
 {% endblock %}
+</center>

@@ -1,7 +1,14 @@
-{% extends 'base.html'}
-
-{% include header %}
+{% extends 'base.html' %}
 
 {% block content %}
+    <h1>{{ product.name }}</h1>
+    <h2>{{ product.desc }}</h2>
+    <p>{{ product.price }}</p>
 
+    <p><a href='/{{ product._id }}/edit'>Edit</a></p>
+
+    <form method="POST" action="/{{product._id}}/delete">
+    <button type="submit">Delete</button></form>
+
+    <h5><a href="/product_list">Back to Product List</a></h5>
 {% endblock %}
