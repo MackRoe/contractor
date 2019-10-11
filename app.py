@@ -14,7 +14,7 @@ members = db.members
 url_base = "https://www.azuregreen.net/images/"
 
 
-
+""" PROPS AND CREDS TO DAVID EVANS FOR BIG BUNCHES OF HELP """
 
 
 
