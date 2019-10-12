@@ -26,6 +26,9 @@
     <img src="{{ img_url }}">
     {{ product.desc }}
     ${{ product.price }}
+    <form action="/updated_cart">
+        <button type="submit">Buy</button>
+    </form>
 {% endfor %}
 <hr>
         <a href="CCATB.html"><img src = "static/CCATB.jpg" class="prod_img" alt="{{ product_name }}"></a><br>
@@ -33,9 +36,6 @@
         <button class="btn btn-outline-default my-2 my-sm-0" name="CCATB" type="submit">
         <input type="hidden" name="buy" value="True"/>Buy</button>
         </a>
-        <form action="/updated_cart">
-                <button type="submit">Buy</button>
-        </form>
         <hr>
         <img src = "static/FC150.jpg"><br>
         <button class="btn btn-outline-default my-2 my-sm-0" name="FC150" type="submit">Buy</button>

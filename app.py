@@ -36,7 +36,7 @@ def products_index():
 
 @app.route("/main.html")
 def main():
-    """renders main from base ?"""
+    """renders main from base """
     return render_template("base.html")
 
 
@@ -120,7 +120,8 @@ def product_update(product_id):
 @app.route("/cart")
 def cart():
     """ renders cart page - R of CRUD """
-    return render_template('cart.html', cart=cart.find())
+    cart_id = cart.insert_one(cart).inserted_id
+    return render_template('cart.html', cart=cart)  # removed .find() from =cart
 
 @app.route("/updated_cart")
 def create_cart_item():
@@ -131,20 +132,20 @@ def create_cart_item():
             'price': request.db.get('price')
         }
     cart.update_one(
-        {'_id': ObjectId(product_id)},
+        {'_id': ObjectId(cart_id)},
         {'$set': updated_cart})
 
 
 
-def update_cart_item():
+# def update_cart_item():
 
-    pass
+#     pass
 
-def remove_cart_item():
-    pass
+# def remove_cart_item():
+#     pass
 
-def calc_cart_total():
-    pass
+# def calc_cart_total():
+#     pass
 
 # ---- not this time Tilda ----
 # def load_catalog():
