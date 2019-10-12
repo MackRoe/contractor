@@ -40,7 +40,7 @@ def main():
     return render_template("base.html")
 
 
-@app.route("/signup.html")
+@app.route("/signup")
 def signup():
     """ renders signup page """
     return render_template("signup.html")
@@ -134,6 +134,7 @@ def create_cart_item():
     cart.update_one(
         {'_id': ObjectId(cart_id)},
         {'$set': updated_cart})
+    return render_template('cart.html', cart=cart)
 
 
 
