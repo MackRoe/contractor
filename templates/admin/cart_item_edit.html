@@ -1,0 +1,28 @@
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/{{product._id}}/edit'>
+    <fieldset>
+    <legend>Edit Product</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='name'>Name</label><br>
+        <input type='text' name='name' value="{{cart_item.name}}"/>
+    </p>
+    <p>
+        <label for='quantity'>Quantity</label><br>
+        <input type='text' name='desc' value="{{cart_item.quantity}}"/>
+    </p>
+    <p>
+        <label for='price'>Price</label><br>
+        <input type='text' name='price' value="{{cart_item.price}}"/>
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Cart Item</button>
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/item_create'>
+    <fieldset>
+    <legend>New Product</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='name'>Name</label><br>
+        <input type='text' name='name' />
+    </p>
+    <p>
+        <label for='quantity'>Quantity</label><br>
+        <input type='text' name='quantity' />
+    </p>
+    <p>
+        <label for='price'>Price</label><br>
+        <input type='text' name='price' />
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Product</button>
+    </p>
+</form>
+{% endblock %}

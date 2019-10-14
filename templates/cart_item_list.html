@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+<!-- {% include 'partials/header.html' %} -->
+
+{% block content %}
+
+{% for cart_item in cart %}
+    <h4><a href="/{{cart_item._id}}">{{ cart_item.name }}</a></h4>
+    <img src="{{ product.img_url }}">
+    {{ cart_item.quantity }}
+    ${{ cart_item.price }}
+    <form action="/updated_cart">
+        <button type="submit">Confirm</button>
+    </form>
+{% endfor %}
+
+{% endblock %}

@@ -126,25 +126,41 @@ def cart():
 @app.route("/updated_cart")
 def create_cart_item():
     """ if prod_code submit then add to cart """
-    if buy == True:
-        updated_cart = {
-            'name': request.db.get('name'),
-            'price': request.db.get('price')
-        }
-    cart.update_one(
-        {'_id': ObjectId(cart_id)},
-        {'$set': updated_cart})
-    return render_template('cart.html', cart=cart)
+    if input request.form.get('buy') == True:
+        print('buy ==' + str(buy))
+        cart_item = {
+            'name': request.cart.get('name'),
+            'price': request.cart.get('price')
+            }
+            # TODO: create print statement to confirm prod name and price are passed 
+            # correctly to the function/method
+            #
+        cart.update_one(
+            {'_id': ObjectId(cart_id)},
+            {'$set': cart_item})
+    return render_template('cart_item_list.html', cart=cart)
 
 
+@app.route('/<cart_id>/edit', methods=["POST"])
+def cart_item_update(cart_id):
+    """Allow user to update a cart item"""
+    updated_cart_item = {
+        'name': request.form.get('name'),
+        'quantity': request.form.get('quantity'),
+        'price': request.form.get('price')
+    }
+    products.update_one(
+        {"_id": ObjectId(cart_id)},
+        {"$set": updated_cart_item})
+    return redirect(url_for('cart_item_list.html', cart_id=cart_id))
 
-# def update_cart_item():
 
-#     pass
-
-# def remove_cart_item():
-#     pass
-
+@app.route('/<cart_id>/delete', methods=["POST"])
+def cart_item_delete(product_id):
+    """Delete a product"""
+    cart.delete_one({"_id": ObjectId(cart_id)})
+    return redirect(url_for('/cart'))
+    
 # def calc_cart_total():
 #     pass
 
